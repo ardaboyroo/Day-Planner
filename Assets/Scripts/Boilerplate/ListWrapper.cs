@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ListWrapper
+public class ListWrapper<T>
 {
-    public List<GameObject> objects = new List<GameObject>();
+    public List<T> list = new List<T>();
 }

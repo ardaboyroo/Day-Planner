@@ -3764,75 +3764,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   test: 1
   layers:
-  - objects:
-    - {fileID: 221323092}
-  - objects:
-    - {fileID: 32693157}
-    - {fileID: 417440928}
-    - {fileID: 860147671}
-    - {fileID: 1052065787}
-    - {fileID: 1904025343}
-    - {fileID: 655463404}
-    - {fileID: 358814689}
-    - {fileID: 1988571139}
-    - {fileID: 1931785170}
-    - {fileID: 135748323}
-    - {fileID: 1490516488}
-    - {fileID: 1476021134}
-    - {fileID: 1040758803}
-    - {fileID: 130739018}
-    - {fileID: 1743587824}
-    - {fileID: 2057463587}
-    - {fileID: 1111451784}
-    - {fileID: 109889918}
-    - {fileID: 1162548020}
-    - {fileID: 104321614}
-    - {fileID: 1107349217}
-    - {fileID: 1223782053}
-    - {fileID: 684555858}
-    - {fileID: 969914264}
-    - {fileID: 1458274840}
-    - {fileID: 1608936261}
-    - {fileID: 830135144}
-    - {fileID: 964959409}
-    - {fileID: 1240175713}
-    - {fileID: 1297376470}
-    - {fileID: 167796431}
-    - {fileID: 883459827}
-    - {fileID: 1231665759}
-    - {fileID: 1108385905}
-    - {fileID: 345329777}
-    - {fileID: 2138065288}
-    - {fileID: 997593244}
-    - {fileID: 127547699}
-    - {fileID: 1015734415}
-    - {fileID: 1294019686}
-    - {fileID: 1381880229}
-    - {fileID: 310719960}
-    - {fileID: 1973456722}
-    - {fileID: 617047180}
-    - {fileID: 858678995}
-    - {fileID: 1123333832}
-    - {fileID: 540946703}
-    - {fileID: 1420323536}
-    - {fileID: 1664242470}
-    - {fileID: 2108945259}
-  - objects: []
-  - objects:
-    - {fileID: 95080723}
-  - objects:
-    - {fileID: 2093303320}
-    - {fileID: 932513199}
-    - {fileID: 2067316627}
-  - objects:
-    - {fileID: 1197426587}
-  - objects:
-    - {fileID: 1432978980}
-    - {fileID: 450364805}
-    - {fileID: 888545016}
-    - {fileID: 162067401}
-    - {fileID: 487218820}
-    - {fileID: 1902902638}
+  - list: []
+  - list: []
+  - list: []
+  - list: []
+  - list: []
+  - list: []
+  - list: []
 --- !u!4 &684718234
 Transform:
   m_ObjectHideFlags: 0
@@ -9150,6 +9088,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5140dc5717441494bae9184f5ff2978a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creator: {fileID: 1432978984}
+  begin: {fileID: 1448088726}
+  end: {fileID: 1437547122}
 --- !u!4 &1972900891
 Transform:
   m_ObjectHideFlags: 0

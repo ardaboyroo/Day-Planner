@@ -7,6 +7,8 @@ using TMPro;
 
 public class ActivityCreator : MonoBehaviour
 {
+    public static ActivityCreator instance { get; private set; }
+
     [SerializeField]public bool isCreatorPanelOpen { get; private set;}
 
     public Sprite baseSprite;
@@ -19,7 +21,7 @@ public class ActivityCreator : MonoBehaviour
     public TMP_Text endMinuteText;
     public TMP_Text titleText;
 
-    [SerializeField] private ActivityManager activityManager;
+    [SerializeField] public ActivityManager activityManager;
 
     private TimeTracker tracker;
 
@@ -28,6 +30,15 @@ public class ActivityCreator : MonoBehaviour
     [SerializeField] private Transform end;
 
     private Activity test;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("Found more than one Activity Creator");
+        }
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +76,7 @@ public class ActivityCreator : MonoBehaviour
         }
         else
         {
+            activityManager.AddActivity(InstantiateActivity(activity));
             creatorPanelPivot.localPosition = new Vector3(3.75f, 0, 1);
         }
     }
@@ -88,8 +100,9 @@ public class ActivityCreator : MonoBehaviour
             activity.endTime = 0f;
     }
 
-    public void InstantiateActivity(/*Activity activity*/)
+    public GameObject InstantiateActivity(Activity activity)
     {
+        Debug.Log("end Time: " + activity.endTime);
         GameObject newActivity = new GameObject(activity.title);
         GameObject childText = new GameObject("Title");
 
@@ -113,7 +126,8 @@ public class ActivityCreator : MonoBehaviour
 
 
         TextMeshPro text = childText.AddComponent<TextMeshPro>();
-        text.text = "<b>"+activity.title+"</b>";
+        text.text = activity.title;
+        text.fontStyle = FontStyles.Bold;
         text.color = Color.white;
         text.fontSize = 3f;
         text.sortingOrder = 2;
@@ -129,6 +143,6 @@ public class ActivityCreator : MonoBehaviour
 
         textTransform.localPosition = new Vector3(0, 0);
 
-        activityManager.AddActivity(newActivity);
+        return newActivity;
     }
 }

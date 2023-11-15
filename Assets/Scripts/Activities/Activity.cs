@@ -21,4 +21,12 @@ public class Activity
 
         this.title = title;
     }
+
+    public Activity(float begin, float end, string title)
+    {
+        beginTime = begin;
+        endTime = end;
+
+        this.title = title;
+    }
 }

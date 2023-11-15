@@ -9,13 +9,13 @@ using UnityEditor;
 public class DrawOrder : MonoBehaviour
 {
     public float test = 1;
-    public List<ListWrapper> layers = new List<ListWrapper>();
+    public List<ListWrapper<GameObject>> layers = new List<ListWrapper<GameObject>>();
 
     public void UpdateOrders()
     {
         for (int layer = 0; layer < layers.Count; layer++)
         {
-            foreach (GameObject obj in layers[layer].objects)
+            foreach (GameObject obj in layers[layer].list)
             {
                 if (obj != null)
                 {
