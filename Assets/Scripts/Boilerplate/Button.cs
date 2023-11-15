@@ -5,7 +5,16 @@ using UnityEngine.Events;
 
 public class Button : MonoBehaviour
 {
-    public UnityEvent uEvent = new UnityEvent();
+    public enum MouseButtons
+    {
+        LeftMouseButton,
+        RightMouseButton,
+        MiddleMouseButton
+    }
+
+    public MouseButtons button = MouseButtons.LeftMouseButton;
+
+    public UnityEvent<GameObject> uEvent = new UnityEvent<GameObject>();
 
     void Start()
     {
@@ -19,17 +28,14 @@ public class Button : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown((int)button))
         {
             if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject)
             {
-                uEvent.Invoke();
+                // Give gameObject as argument for methods that require a GameObject argument
+                // such as ActivityManager.DestroyActivity()
+                uEvent.Invoke(gameObject);
             }
         }
-    }
-
-    public void TestMethod()
-    {
-        Debug.Log("Clicked");
     }
 }

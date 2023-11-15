@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class TimeTracker : MonoBehaviour
 {
+    // Make it a singleton since we don't need more than 1 instance
+    public static TimeTracker instance { get; private set;}
+
     /// <summary>
     /// A float between 0 and 1 that returns the time passed since the beginning of the day (00:00 - 23:59)
     /// </summary>
@@ -14,6 +17,15 @@ public class TimeTracker : MonoBehaviour
     public int DayOfMonth { get; private set; }  // 1-31
     public int Month { get; private set; }      // 1-12
     public int Year { get; private set; }
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("Found more than one Time Tracker Instance");
+        }
+        instance = this;
+    }
 
     private void Start()
     {
@@ -105,5 +117,27 @@ public class TimeTracker : MonoBehaviour
             default:
                 return "Month";
         }
+    }
+
+    public static float TimeToDayProgress(int hours, int minutes, int seconds)
+    {
+        float currentHour = Mathf.Clamp(hours, 0, 23);
+        float currentMinute = Mathf.Clamp(minutes, 0, 59);
+        float currentSecond = Mathf.Clamp(seconds, 0, 59);
+        
+        return Mathf.Clamp01(((currentHour * 60 * 60) + (currentMinute * 60) + currentSecond) / (24 * 60 * 60));
+    }
+
+    public static Vector3 DayProgressToTime(float dayProgress)
+    {
+        dayProgress = Mathf.Clamp01(dayProgress);
+
+        float totalSeconds = dayProgress * 24 * 60 * 60;
+
+        float hours = Mathf.Floor(totalSeconds / 3600);
+        float minutes = Mathf.Floor(totalSeconds % 60 / 60);
+        float seconds = totalSeconds % 60;
+
+        return new Vector3 (hours, minutes, seconds);
     }
 }
